@@ -1,0 +1,9 @@
+C:\D Drive\DatingApp\DatingApp.Model\bin\Debug\netstandard2.0\DatingApp.Model.deps.json
+C:\D Drive\DatingApp\DatingApp.Model\bin\Debug\netstandard2.0\DatingApp.Model.dll
+C:\D Drive\DatingApp\DatingApp.Model\bin\Debug\netstandard2.0\DatingApp.Model.pdb
+C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.csproj.CoreCompileInputs.cache
+C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.AssemblyInfoInputs.cache
+C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.AssemblyInfo.cs
+C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.dll
+C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.pdb
+C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.csprojAssemblyReference.cache

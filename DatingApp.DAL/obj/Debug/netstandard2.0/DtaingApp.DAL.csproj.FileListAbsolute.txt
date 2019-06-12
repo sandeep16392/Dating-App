@@ -1,0 +1,6 @@
+C:\D Drive\DatingApp\DtaingApp.DAL\bin\Debug\netstandard2.0\DtaingApp.DAL.deps.json
+C:\D Drive\DatingApp\DtaingApp.DAL\bin\Debug\netstandard2.0\DtaingApp.DAL.dll
+C:\D Drive\DatingApp\DtaingApp.DAL\obj\Debug\netstandard2.0\DtaingApp.DAL.csprojAssemblyReference.cache
+C:\D Drive\DatingApp\DtaingApp.DAL\obj\Debug\netstandard2.0\DtaingApp.DAL.csproj.CoreCompileInputs.cache
+C:\D Drive\DatingApp\DtaingApp.DAL\obj\Debug\netstandard2.0\DtaingApp.DAL.AssemblyInfoInputs.cache
+C:\D Drive\DatingApp\DtaingApp.DAL\obj\Debug\netstandard2.0\DtaingApp.DAL.AssemblyInfo.cs

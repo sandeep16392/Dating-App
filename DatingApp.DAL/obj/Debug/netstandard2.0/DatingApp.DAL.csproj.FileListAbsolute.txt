@@ -1,0 +1,12 @@
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.csprojAssemblyReference.cache
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.csproj.CoreCompileInputs.cache
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.AssemblyInfoInputs.cache
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.AssemblyInfo.cs
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\DatingApp.DAL.deps.json
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\DatingApp.DAL.dll
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\DatingApp.DAL.pdb
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\DatingApp.Model.dll
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\DatingApp.Model.pdb
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.csproj.CopyComplete
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.dll
+C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.pdb
