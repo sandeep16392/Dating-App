@@ -26,8 +26,7 @@ export class AuthService {
       );
   }
 
-  register(model: User){
-    return this.http.post(this.config.baseUrl+this.config.registerUrl, model)
-      
+  register(model: User) {
+    return this.http.post(this.config.baseUrl + this.config.registerUrl, model);
   }
 }

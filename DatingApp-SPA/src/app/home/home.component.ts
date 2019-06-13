@@ -12,22 +12,10 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getValues();
   }
 
   registerToggle() {
     this.registerMode = true;
-  }
-
-  getValues() {
-    this.http.get('https://localhost:44368/api/values/').subscribe(
-      resp => {
-        this.values = resp;
-      },
-      error => {
-        console.log(error);
-      }
-    );
   }
 
   cancelRegisterMode(registerMode: boolean) {
