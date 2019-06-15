@@ -19,7 +19,7 @@ namespace DatingApp.DAL.Implementation
             byte[] passwordHash;
             byte[] passwordSalt;
 
-            CreatePasswordHas(password, out passwordSalt, out passwordHash);
+            CreatePasswordHash(password, out passwordSalt, out passwordHash);
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
@@ -65,7 +65,7 @@ namespace DatingApp.DAL.Implementation
                 return true;
             return false;
         }
-        private void CreatePasswordHas(string password, out byte[] passwordSalt, out byte[] passwordHash)
+        private void CreatePasswordHash(string password, out byte[] passwordSalt, out byte[] passwordHash)
         {
             using (var hash = new System.Security.Cryptography.HMACSHA512())
             {

@@ -6,4 +6,3 @@ C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.As
 C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.AssemblyInfo.cs
 C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.dll
 C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.pdb
-C:\D Drive\DatingApp\DatingApp.Model\obj\Debug\netstandard2.0\DatingApp.Model.csprojAssemblyReference.cache
