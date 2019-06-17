@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/User';
 import { CommonConfig } from '../config/CommonConfig';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +16,9 @@ export class AuthService {
     this.config = new CommonConfig();
   }
 
-  login(model: User) {
+  login(model: any) {
     return this.http
-      .post(this.config.baseUrl + this.config.loginUrl, model)
+      .post(environment.baseUrl + environment.loginUrl, model)
       .pipe(
         map((resp: any) => {
           const user = resp;
@@ -30,8 +30,8 @@ export class AuthService {
       );
   }
 
-  register(model: User) {
-    return this.http.post(this.config.baseUrl + this.config.registerUrl, model);
+  register(model: any) {
+    return this.http.post(environment.baseUrl + environment.registerUrl, model);
   }
 
   loggedIn() {

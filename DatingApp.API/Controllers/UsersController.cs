@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using DatingApp.DAL.Interface;
+using DatingApp.Model.DataModels;
 using DatingApp.Model.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -39,5 +41,21 @@ namespace DatingApp.API.Controllers
             var userDm = _mapper.MapEmToDm(user);
             return Ok(userDm);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, UserUpdateDm userForUpdate)
+        {
+            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+
+            var userFromRepo = await _repository.GetUser(id);
+            var userToSave = _mapper.MapDmToEm(userForUpdate, userFromRepo);
+
+            if (await _repository.SaveAll())
+                return NoContent();
+
+            throw new Exception($"Updating user {id} failed on save.");
+        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace DatingApp.Model.Interface
     {
         UserDetailsDm MapEmToDm(User userEm);
         IEnumerable<UserListDm> MapEmsToDms(IEnumerable<User> userEms);
+        User MapDmToEm(UserUpdateDm userUpdateDm, User userFromRepo);
     }
 }

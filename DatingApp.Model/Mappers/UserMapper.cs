@@ -24,5 +24,10 @@ namespace DatingApp.Model.Mappers
         {
             return _autoMapper.Map<IEnumerable<UserListDm>>(userEms);
         }
+
+        public User MapDmToEm(UserUpdateDm userUpdateDm, User userFromRepo)
+        {
+            return _autoMapper.Map(userUpdateDm, userFromRepo);
+        }
     }
 }

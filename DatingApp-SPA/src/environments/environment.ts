@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  blacklistDomain: ['localhost:44368/api/Auth'],
+  whiteListedDomain: ['localhost:44368'],
+  production: false,
+  baseUrl : 'https://localhost:44368/',
+  loginUrl : 'api/Auth/login',
+  registerUrl : 'api/Auth/register'
 };
 
 /*
