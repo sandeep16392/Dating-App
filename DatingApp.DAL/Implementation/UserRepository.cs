@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.DAL.Implementation
 {
-    public class DatingRepository : BaseRepository, IDatingRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
-        public DatingRepository(DataContext context) : base(context)
+        public UserRepository(DataContext context) : base(context)
         {
         }
 

@@ -10,5 +10,5 @@ C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\DatingApp.Model.pdb
 C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.csproj.CopyComplete
 C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.dll
 C:\D Drive\DatingApp\DatingApp.DAL\obj\Debug\netstandard2.0\DatingApp.DAL.pdb
-C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
-C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\Newtonsoft.Json.xml
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll
+C:\D Drive\DatingApp\DatingApp.DAL\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Http.Features.xml

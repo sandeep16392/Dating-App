@@ -3,10 +3,12 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DatingApp.API.Configs;
 using DatingApp.DAL.Interface;
 using DatingApp.Model.DataModels;
 using DatingApp.Model.EntityModels;
+using DatingApp.Model.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -18,11 +20,15 @@ namespace DatingApp.API.Controllers
     {
         private readonly IAuthRepository _authRepository;
         private readonly ICommonConfigurations _config;
+        private readonly IMapper _mapper;
+        private readonly IUserMapper _userMapper;
 
-        public AuthController(IAuthRepository authRepository, ICommonConfigurations config)
+        public AuthController(IAuthRepository authRepository, ICommonConfigurations config, IMapper mapper, IUserMapper userMapper)
         {
             _authRepository = authRepository;
             _config = config;
+            _mapper = mapper;
+            _userMapper = userMapper;
         }
 
         [HttpPost("register")]
@@ -35,14 +41,13 @@ namespace DatingApp.API.Controllers
             if (await _authRepository.UserExists(user.Username))
                 return BadRequest("Username already exists.");
 
-            var userToCreate = new User
-            {
-                UserName = user.Username
-            };
+            var userToCreate = _mapper.Map<User>(user);
 
             await _authRepository.Register(userToCreate, user.Password);
 
-            return StatusCode(201);
+            var userToReturn = _userMapper.MapEmToDm(userToCreate);
+
+            return CreatedAtRoute("GetUser", new{controller = "Users", id= userToReturn.Id}, userToReturn);
         }
 
         [HttpPost("login")]
@@ -69,12 +74,16 @@ namespace DatingApp.API.Controllers
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = credentials
             };
-
+            var userToReturn = _mapper.Map<UserListDm>(userFromRepo);
             var tokenHandler = new JwtSecurityTokenHandler();
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {token = tokenHandler.WriteToken(token)});
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token),
+                user = userToReturn
+            });
         }
     }
 }

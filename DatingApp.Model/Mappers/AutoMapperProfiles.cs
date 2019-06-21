@@ -22,6 +22,11 @@ namespace DatingApp.Model.Mappers
                 .ForMember(dest => dest.Age, opt => { opt.MapFrom(x => x.DateOfBirth.CalculateAge()); });
             CreateMap<Photo, PhotosDm>();
             CreateMap<UserUpdateDm, User>();
+            CreateMap<UserPhotoDm, Photo>();
+            CreateMap<Photo, UserPhotoDm>();
+            CreateMap<UserDm, User>();
+            CreateMap<User, UserDm>();
+            CreateMap<UserDetailsDm, User>();
         }
     }
 }

@@ -43,11 +43,13 @@ namespace DatingApp.API
                 {
                     opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 });
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySetting"));
             services.AddCors();
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IBaseRepository, BaseRepository>();
-            services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
