@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DatingApp.API.Filters;
 using DatingApp.DAL.Interface;
 using DatingApp.Model.DataModels;
 using DatingApp.Model.Interface;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivityFilter))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]

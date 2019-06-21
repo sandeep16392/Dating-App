@@ -2,6 +2,7 @@
 using System.Text;
 using AutoMapper;
 using DatingApp.API.Configs;
+using DatingApp.API.Filters;
 using DatingApp.API.Helpers;
 using DatingApp.DAL.Data;
 using DatingApp.DAL.Implementation;
@@ -62,6 +63,7 @@ namespace DatingApp.API
                     ValidateAudience = false
                 };
             });
+            services.AddScoped<LogUserActivityFilter>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
