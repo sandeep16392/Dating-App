@@ -647,10 +647,19 @@
       "DatingApp.Model/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.1.1",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "System.ComponentModel.Annotations": "4.5.0",
+          "Microsoft.AspNetCore.Http.Features": "2.2.0.0"
         },
         "runtime": {
           "DatingApp.Model.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features.Reference/2.2.0.0": {
+        "runtime": {
+          "Microsoft.AspNetCore.Http.Features.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
         }
       }
     }
@@ -1104,6 +1113,11 @@
     },
     "DatingApp.Model/1.0.0": {
       "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Http.Features.Reference/2.2.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

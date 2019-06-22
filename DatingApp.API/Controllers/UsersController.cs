@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using DatingApp.API.Filters;
+using DatingApp.API.Helpers;
+using DatingApp.DAL.Helpers;
 using DatingApp.DAL.Interface;
 using DatingApp.Model.DataModels;
 using DatingApp.Model.Interface;
@@ -29,11 +31,27 @@ namespace DatingApp.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        public async Task<IActionResult> GetUsers([FromQuery]PaginationParams pageParams)
         {
-            var users = await _repository.GetUsers();
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var currentUser = await _repository.GetUser(currentUserId);
+            pageParams.UserId = currentUserId;
+            if (string.IsNullOrEmpty(pageParams.Gender))
+            {
+                pageParams.Gender = currentUser.Gender == "male" ? "female" : "male";
+            }
+
+            var users = await _repository.GetUsers(pageParams);
+
             var userDms = _mapper.MapEmsToDms(users);
-            return Ok(userDms);
+            var paginatedResp = new PaginateResponseDm
+            {
+                Pagination = new PaginationDm(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages),
+                Users = userDms
+            };
+            //Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+
+            return Ok(paginatedResp);
         }
 
         [HttpGet("{id}", Name = "GetUser")]
