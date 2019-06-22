@@ -12,7 +12,12 @@ import { map } from 'rxjs/operators';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUsers(page?, itemsPerPage?, userParams?): Observable<PaginationResult<User[]>> {
+  getUsers(
+    page?,
+    itemsPerPage?,
+    userParams?,
+    likeParams?
+  ): Observable<PaginationResult<User[]>> {
     const paginatedResult: PaginationResult<User[]> = new PaginationResult<
       User[]
     >();
@@ -28,6 +33,14 @@ export class UserService {
       params = params.append('maxAge', userParams.maxAge);
       params = params.append('gender', userParams.gender);
       params = params.append('orderBy', userParams.orderBy);
+    }
+
+    if (likeParams === 'liker'){
+      params = params.append('liker', 'true');
+    }
+
+    if (likeParams === 'likee'){
+      params = params.append('likee', 'true');
     }
 
     return this.http
@@ -72,6 +85,13 @@ export class UserService {
   deletePhoto(userid: number, id: number) {
     return this.http.delete(
       environment.baseUrl + 'api/Users/' + userid + '/photos/' + id
+    );
+  }
+
+  sendLike(userid: number, recepientId: number) {
+    return this.http.post(
+      environment.baseUrl + 'api/users/' + userid + '/like/' + recepientId,
+      {}
     );
   }
 }

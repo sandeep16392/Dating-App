@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using DatingApp.DAL.Data;
 using DatingApp.DAL.Helpers;
@@ -15,20 +17,33 @@ namespace DatingApp.DAL.Implementation
         {
         }
 
-        public async Task<PagedList<User>> GetUsers(PaginationParams pageParams)
+        public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
             var users = Context.Users.Include(x => x.Photos).OrderByDescending(x => x.LastActive)
-                .Where(x => x.Gender == pageParams.Gender && x.Id != pageParams.UserId);
-            if (pageParams.MaxAge != 99 || pageParams.MinAge != 18)
+                .Where(x => x.Gender == userParams.Gender && x.Id != userParams.UserId);
+            if (userParams.MaxAge != 99 || userParams.MinAge != 18)
             {
-                var minDob = DateTime.Today.AddYears(-pageParams.MaxAge - 1);
-                var maxDob = DateTime.Today.AddYears(-pageParams.MinAge);
+                var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+                var maxDob = DateTime.Today.AddYears(-userParams.MinAge);
                 users = users.Where(x => x.DateOfBirth >= minDob && x.DateOfBirth <= maxDob);
             }
 
-            if (!string.IsNullOrEmpty(pageParams.OrderBy))
+
+            if (userParams.Liker)
             {
-                switch (pageParams.OrderBy)
+                var userLikers = await UserLikes(userParams.UserId, userParams.Liker);
+                users = users.Where(x => userLikers.Contains(x.Id));
+            }
+
+            if (userParams.Likee)
+            {
+                var userLikees = await UserLikes(userParams.UserId, userParams.Liker);
+                users = users.Where(x => userLikees.Contains(x.Id));
+            }
+
+            if (!string.IsNullOrEmpty(userParams.OrderBy))
+            {
+                switch (userParams.OrderBy)
                 {
                     case "created":
                         users = users.OrderByDescending(x => x.Created);
@@ -38,7 +53,22 @@ namespace DatingApp.DAL.Implementation
                         break;
                 }
             }
-            return await PagedList<User>.CreateAsync(users, pageParams.PageNumber, pageParams.PageSize);
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
+        }
+
+        private async Task<IEnumerable<int>> UserLikes(int id, bool likers)
+        {
+            var user = await Context.Users.Include(x => x.Likees).Include(x => x.Likers)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
+            if (likers)
+            {
+                return user.Likers.Where(x => x.LikeeId == id).Select(x => x.LikerId);
+            }
+            else
+            {
+                return user.Likees.Where(x => x.LikerId == id).Select(x => x.LikeeId);
+            }
         }
 
         public async Task<User> GetUser(int id)
@@ -46,6 +76,11 @@ namespace DatingApp.DAL.Implementation
             var user = await Context.Users.Include(x => x.Photos).FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
+        }
+
+        public async Task<Like> GetLike(int userId, int recepientId)
+        {
+            return await Context.Likes.FirstOrDefaultAsync(x => x.LikerId == userId && x.LikeeId == recepientId);
         }
     }
 }

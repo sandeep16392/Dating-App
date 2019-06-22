@@ -6,7 +6,8 @@ namespace DatingApp.DAL.Interface
 {
     public interface IUserRepository : IBaseRepository
     {
-        Task<PagedList<User>> GetUsers(PaginationParams pageParams);
+        Task<PagedList<User>> GetUsers(UserParams userParams);
         Task<User> GetUser(int id);
+        Task<Like> GetLike(int userId, int recepientId);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DatingApp.DAL.Helpers
 {
-    public class PaginationParams
+    public class UserParams
     {
         private const int MaxPageSize = 50;
         public int PageNumber { get; set; } = 1;
@@ -17,5 +17,8 @@
         public int MinAge { get; set; } = 18;
         public int MaxAge { get; set; } = 99;
         public string OrderBy { get; set; }
+        public bool Liker { get; set; } = false;
+        public bool Likee { get; set; } = false;
+
     }
 }
